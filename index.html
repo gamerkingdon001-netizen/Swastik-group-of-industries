@@ -3,53 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Super Galaxy E-commerce Store</title>
-</head>
-<body>
-    <nav class="sticky-nav">
-        <div class="cart-counter">Cart: 0</div>
-        <input type="text" placeholder="Search products..." id="search-bar">
-    </nav>
-    <h1>Welcome to the Super Galaxy E-commerce Store</h1>
-    <section class="products">
-        <h2>Available Products</h2>
-        <div class="product-list">
-            <!-- Example Product Item -->
-            <div class="product-item">
-                <h3>Pantry Staples</h3>
-                <p>Description of pantry staples.</p>
-            </div>
-            <div class="product-item">
-                <h3>Dairy</h3>
-                <p>Description of dairy products.</p>
-            </div>
-            <div class="product-item">
-                <h3>Vegetables</h3>
-                <p>Description of fresh vegetables.</p>
-            </div>
-            <div class="product-item">
-                <h3>Personal Care</h3>
-                <p>Description of personal care products.</p>
-            </div>
-            <div class="product-item">
-                <h3>Cleaning Supplies</h3>
-                <p>Description of cleaning supplies.</p>
-            </div>
-            <div class="product-item">
-                <h3>Snacks</h3>
-                <p>Description of snacks.</p>
-            </div>
-            <!-- Add more product items here -->
-        </div>
-    </section>
-    <footer>
-        <button id="checkout-button" onclick="whatsappCheckout('919475362410')">Checkout via WhatsApp</button>
-    </footer>
-    <script>
-        function whatsappCheckout(phoneNumber) {
-            window.open(`https://wa.me/${phoneNumber}`, '_blank');
+    <title>Super Galaxy | Shop</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #ffffff;
+            --accent: #00d4ff;
         }
+
+        body.dark-mode {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            padding: 15px 20px;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 500;
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--accent);
+        }
+
+        #cart-counter {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: var(--accent);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            z-index: 1000;
+        }
+
+        .top-controls {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        input {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #222;
+            color: white;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        #search-bar {
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .admin-panel {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px dashed var(--accent);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .add-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .add-form button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #product-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background-color: #333;
+        }
+
+        .product-card button {
+            background-color: var(--accent);
+            color: #000;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .cart-summary {
+            text-align: center;
+            padding: 30px;
+            margin-bottom: 50px;
+        }
+
+        .cart-summary button {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <nav>
+        <h1>Super Galaxy</h1>
+    </nav>
+    
+    <div id="cart-counter">Cart: 0 items</div>
+
+    <div class="top-controls">
+        <input type="text" id="search-bar" placeholder="🔍 Search daily needs..." oninput="searchProducts()">
+        
+        <div class="admin-panel">
+            <h3 style="margin: 0; text-align: center;">➕ Add Custom Product</h3>
+            <div class="add-form">
+                <input type="text" id="new-name" placeholder="Product Name">
+                <input type="number" id="new-price" placeholder="Price (₹)">
+                <input type="text" id="new-img" placeholder="Image URL (optional)">
+                <button onclick="addNewProduct()">Add Product</button>
+            </div>
+        </div>
+    </div>
+
+    <main id="product-container"></main>
+
+    <div class="cart-summary">
+        <button onclick="checkoutWhatsApp()">Order via WhatsApp</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    
+    <script>
+        const products = [
+            { id: 1, name: "Basmati Rice (1kg)", price: 120, img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80" },
+            { id: 2, name: "Whole Wheat Flour (5kg)", price: 210, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Wheat+Flour" },
+            { id: 3, name: "Toor Dal (1kg)", price: 160, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Toor+Dal" },
+            { id: 4, name: "Crystal Sugar (1kg)", price: 45, img: "https://images.unsplash.com/photo-1581456495146-65a71b2c8e52?w=400&q=80" },
+            { id: 5, name: "Tata Salt (1kg)", price: 28, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Salt" },
+            { id: 6, name: "Sunflower Oil (1L)", price: 140, img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80" },
+            { id: 7, name: "Tata Tea Gold (500g)", price: 280, img: "https://images.unsplash.com/photo-1594631252845-29fc4cc8c0a1?w=400&q=80" },
+            { id: 8, name: "Nescafe Coffee (50g)", price: 170, img: "https://images.unsplash.com/photo-1559525839-b184a4d698c7?w=400&q=80" },
+            { id: 9, name: "Amul Milk (1L)", price: 68, img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80" },
+            { id: 10, name: "Farm Fresh Eggs (30)", price: 210, img: "https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=400&q=80" },
+            { id: 11, name: "Amul Butter (100g)", price: 56, img: "https://images.unsplash.com/photo-1589134707168-54b17f54c997?w=400&q=80" },
+            { id: 12, name: "Cheese Slices (100g)", price: 75, img: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400&q=80" },
+            { id: 13, name: "Fresh Potatoes (1kg)", price: 30, img: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&q=80" },
+            { id: 14, name: "Red Onions (1kg)", price: 40, img: "https://images.unsplash.com/photo-1518977956812-cd3adadaaf31?w=400&q=80" },
+            { id: 15, name: "Tomatoes (1kg)", price: 50, img: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&q=80" },
+            { id: 16, name: "Garlic (250g)", price: 80, img: "https://images.unsplash.com/photo-1540148426945-36d080a5d669?w=400&q=80" },
+            { id: 17, name: "Dove Soap (100g)", price: 65, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Dove+Soap" },
+            { id: 18, name: "Colgate Toothpaste (150g)", price: 115, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Toothpaste" },
+            { id: 19, name: "Head & Shoulders (340ml)", price: 340, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Shampoo" },
+            { id: 20, name: "Dettol Handwash (200ml)", price: 99, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Handwash" },
+            { id: 21, name: "Surf Excel Liquid (1L)", price: 230, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Laundry" },
+            { id: 22, name: "Vim Dishwash (250ml)", price: 55, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Dishwash" },
+            { id: 23, name: "Lizol Floor Cleaner (500ml)", price: 105, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Floor+Cleaner" },
+            { id: 24, name: "Maggi Noodles (140g)", price: 28, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Maggi" },
+            { id: 25, name: "Lays Chips (50g)", price: 20, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Lays" },
+            { id: 26, name: "Parle-G Biscuits (250g)", price: 25, img: "https://via.placeholder.com/400x300/333333/ffffff?text=Parle-G" }
+        ];
+
+        let cart = [];
+
+        function renderProducts(listToRender = products) {
+            const container = document.getElementById('product-container');
+            if (listToRender.length === 0) {
+                container.innerHTML = `<h3 style="text-align: center; width: 100%; color: #888;">No products found.</h3>`;
+                return;
+            }
+            container.innerHTML = listToRender.map(item => `
+                <div class="product-card">
+                    <img src="${item.img}" alt="${item.name}">
+                    <h3>${item.name}</h3>
+                    <p>₹${item.price}</p>
+                    <button onclick="addToCart(${item.id})">Add to Cart</button>
+                </div>
+            `).join('');
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            const filteredProducts = products.filter(item => item.name.toLowerCase().includes(query));
+            renderProducts(filteredProducts);
+        }
+
+        function addNewProduct() {
+            const nameInput = document.getElementById('new-name').value;
+            const priceInput = document.getElementById('new-price').value;
+            let imgInput = document.getElementById('new-img').value;
+
+            if (!nameInput || !priceInput) {
+                alert("Please enter a product name and price!");
+                return;
+            }
+
+            if (!imgInput) {
+                imgInput = "https://via.placeholder.com/400x300/333333/ffffff?text=New+Product";
+            }
+
+            const newProduct = {
+                id: Date.now(),
+                name: nameInput,
+                price: parseFloat(priceInput),
+                img: imgInput
+            };
+
+            products.push(newProduct);
+            document.getElementById('new-name').value = '';
+            document.getElementById('new-price').value = '';
+            document.getElementById('new-img').value = '';
+            document.getElementById('search-bar').value = '';
+            renderProducts();
+            alert(`${nameInput} added successfully!`);
+        }
+
+        function addToCart(productId) {
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                const product = products.find(item => item.id === productId);
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-counter').innerText = `Cart: ${totalItems} items`;
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Your cart is empty! Add some groceries first.");
+                return;
+            }
+
+            confetti({
+                particleCount: 150,
+                spread: 80,
+                origin: { y: 0.6 }
+            });
+
+            let message = "🚀 *New Order from Super Galaxy*%0A";
+            message += "--------------------------%0A";
+            let grandTotal = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                grandTotal += itemTotal;
+                message += `• *${item.name}* (₹${item.price} x ${item.quantity}) = ₹${itemTotal}%0A`;
+            });
+
+            message += "--------------------------%0A";
+            message += `*Total Amount: ₹${grandTotal}*%0A%0A`;
+            message += "Please confirm my order!";
+
+            const phone = "919475362410";
+            cart = [];
+            updateCartUI();
+
+            setTimeout(() => {
+                window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+            }, 1500); 
+        }
+
+        renderProducts();
     </script>
 </body>
 </html>
