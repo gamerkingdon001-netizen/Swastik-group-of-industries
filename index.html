@@ -1,738 +1,168 @@
-<!-- REBUILT 2026 - Professional Design v2.0 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swastik Group - Quality Products & Top Grade Service</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swastik Group GOD LEVEL</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: #f5f5f5;
-            color: #333;
-        }
-
-        /* ===== NAVBAR ===== */
-        nav {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2);
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .search-box {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            width: 300px;
-            font-size: 14px;
-        }
-
-        .search-box:focus {
-            outline: none;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        #cart-badge {
-            background: #e74c3c;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        #cart-badge:hover {
-            background: #c0392b;
-            transform: scale(1.1);
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
-            color: white;
-            padding: 80px 30px;
-            text-align: center;
-            animation: slideIn 0.8s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            font-family: 'Poppins', sans-serif;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .hero .tagline {
-            font-size: 24px;
-            margin-bottom: 20px;
-            opacity: 0.95;
-        }
-
-        .hero p {
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #2ecc71;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #2ecc71;
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about {
-            padding: 60px 30px;
-            background: white;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 36px;
-            font-family: 'Poppins', sans-serif;
-            color: #2ecc71;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-card {
-            padding: 30px;
-            border-left: 5px solid #2ecc71;
-            background: #f9f9f9;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-
-        .about-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1);
-        }
-
-        .about-card h3 {
-            color: #2ecc71;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .about-card p {
-            line-height: 1.6;
-            color: #666;
-        }
-
-        /* ===== FILTERS ===== */
-        .filters {
-            padding: 30px;
-            background: white;
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-            border-bottom: 2px solid #eee;
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            border: 2px solid #2ecc71;
-            background: white;
-            color: #2ecc71;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #2ecc71;
-            color: white;
-        }
-
-        /* ===== PRODUCTS SECTION ===== */
-        .products-section {
-            padding: 40px 30px;
-            background: #f5f5f5;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
-        }
-
-        .product-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background: #eee;
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .product-price {
-            font-size: 24px;
-            color: #2ecc71;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .add-to-cart-btn {
-            width: 100%;
-            padding: 12px;
-            background: #2ecc71;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-
-        .add-to-cart-btn:hover {
-            background: #27ae60;
-            transform: scale(1.02);
-        }
-
-        /* ===== ADMIN PANEL ===== */
-        .admin-section {
-            padding: 40px 30px;
-            background: white;
-            border-top: 2px solid #eee;
-        }
-
-        .admin-form {
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .admin-form input {
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .admin-form input:focus {
-            outline: none;
-            border-color: #2ecc71;
-        }
-
-        .admin-form button {
-            padding: 12px 30px;
-            background: #2ecc71;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .admin-form button:hover {
-            background: #27ae60;
-        }
-
-        /* ===== CHECKOUT ===== */
-        .checkout-section {
-            padding: 40px 30px;
-            background: #f5f5f5;
-            text-align: center;
-        }
-
-        .checkout-btn {
-            padding: 18px 50px;
-            background: #25D366;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-        }
-
-        .checkout-btn:hover {
-            background: #1fa856;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: #2c3e50;
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-        }
-
-        footer h3 {
-            color: #2ecc71;
-            margin-bottom: 15px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto 40px;
-            text-align: left;
-        }
-
-        .footer-col h4 {
-            color: #2ecc71;
-            margin-bottom: 15px;
-        }
-
-        .footer-col p {
-            line-height: 1.8;
-            color: #bbb;
-        }
-
-        .footer-col a {
-            color: #2ecc71;
-            text-decoration: none;
-        }
-
-        .footer-col a:hover {
-            text-decoration: underline;
-        }
-
-        .copyright {
-            border-top: 1px solid #444;
-            padding-top: 20px;
-            color: #999;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .search-box {
-                width: 100%;
-                max-width: 200px;
-            }
-
-            .products-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .admin-form {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Poppins,sans-serif;background:linear-gradient(135deg,#e8fdf5,#ffffff)}
+nav{background:#27ae60;color:#fff;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}
+.logo{font-size:24px;font-weight:700}
+.search{padding:10px;border-radius:25px;border:none;width:220px}
+.cart{background:#e74c3c;padding:8px 15px;border-radius:20px;cursor:pointer}
+.hero{padding:60px;text-align:center;color:#fff;background:linear-gradient(135deg,#27ae60,#2ecc71)}
+.hero h1{font-size:40px}
+.container{padding:20px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;justify-content:center}
+.filters button{padding:8px 18px;border-radius:25px;border:2px solid #27ae60;background:#fff;color:#27ae60;cursor:pointer}
+.filters .active{background:#27ae60;color:#fff}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.card{background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.1);transition:.3s}
+.card:hover{transform:translateY(-8px) scale(1.02)}
+.card img{width:100%;height:170px;object-fit:cover}
+.card-body{padding:15px}
+.price{color:#27ae60;font-weight:700;margin:10px 0}
+button{background:#27ae60;color:#fff;border:none;padding:10px;border-radius:6px;width:100%;cursor:pointer}
+.cart-box{position:fixed;right:-350px;top:0;width:320px;height:100%;background:#fff;box-shadow:-5px 0 25px rgba(0,0,0,.2);padding:20px;transition:.4s;overflow:auto}
+.cart-box.open{right:0}
+.cart-item{margin-bottom:15px;border-bottom:1px solid #ddd;padding-bottom:10px}
+.checkout{background:#25D366;margin-top:10px}
+.upi{background:#6c5ce7;margin-top:10px}
+.footer{text-align:center;padding:20px;background:#2c3e50;color:#fff;margin-top:30px}
+</style>
 </head>
+
 <body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <div class="logo">🌾 Swastik Group</div>
-        <div class="nav-right">
-            <input type="text" class="search-box" id="search-input" placeholder="🔍 Search products..." oninput="searchProducts()">
-            <div id="cart-badge">🛒 Cart: 0</div>
-        </div>
-    </nav>
+<nav>
+<div class="logo">🌾 Swastik Group</div>
+<input class="search" placeholder="Search..." id="search" oninput="updateView()">
+<div class="cart" onclick="toggleCart()" id="cartCount">Cart: 0</div>
+</nav>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <h1>Swastik Group of Industries</h1>
-        <p class="tagline">🌱 Quality & Trust - Direct From Farmers to Your Doorstep</p>
-        <p>Experience premium quality products with top-grade service. From fresh produce to household essentials, we bring the best products to you!</p>
-        <div class="hero-buttons">
-            <button class="btn btn-primary" onclick="scrollToProducts()">Shop Now</button>
-            <button class="btn btn-secondary" onclick="scrollToAbout()">Learn More</button>
-        </div>
-    </section>
+<div class="hero">
+<h1>Premium Grocery Experience</h1>
+<p>Direct from farmers • Fast delivery • Best quality</p>
+</div>
 
-    <!-- ABOUT SECTION -->
-    <section class="about" id="about-section">
-        <h2 class="section-title">Why Choose Swastik?</h2>
-        <div class="about-content">
-            <div class="about-card">
-                <h3>✅ High Quality</h3>
-                <p>We source only the best quality products directly from trusted farmers and suppliers.</p>
-            </div>
-            <div class="about-card">
-                <h3>⭐ Top Grade Service</h3>
-                <p>Our commitment to excellence ensures you receive exceptional customer service every time.</p>
-            </div>
-            <div class="about-card">
-                <h3>🚚 Fast Delivery</h3>
-                <p>Quick and reliable delivery right to your doorstep. Your satisfaction is our priority.</p>
-            </div>
-            <div class="about-card">
-                <h3>🌍 Direct Sourcing</h3>
-                <p>We work directly with farmers and suppliers to ensure authenticity and fair pricing.</p>
-            </div>
-        </div>
-    </section>
+<div class="container">
+<div class="filters">
+<button onclick="setFilter('all',this)" class="active">All</button>
+<button onclick="setFilter('fresh',this)">Fresh</button>
+<button onclick="setFilter('dairy',this)">Dairy</button>
+<button onclick="setFilter('pantry',this)">Pantry</button>
+</div>
 
-    <!-- FILTER BUTTONS -->
-    <div class="filters" id="filter-section">
-        <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
-        <button class="filter-btn" onclick="filterProducts('fresh')">🌱 Fresh Produce</button>
-        <button class="filter-btn" onclick="filterProducts('dairy')">🥛 Dairy & Eggs</button>
-        <button class="filter-btn" onclick="filterProducts('pantry')">📦 Pantry Staples</button>
-        <button class="filter-btn" onclick="filterProducts('personal')">🧼 Personal Care</button>
-    </div>
+<div class="products" id="products"></div>
+</div>
 
-    <!-- PRODUCTS SECTION -->
-    <section class="products-section" id="products-section">
-        <div class="products-grid" id="products-container"></div>
-    </section>
+<div class="cart-box" id="cartBox">
+<h2>🛒 Cart</h2>
+<div id="cartItems"></div>
+<button class="checkout" onclick="checkout()">WhatsApp Order</button>
+<button class="upi" onclick="payUPI()">UPI Pay</button>
+</div>
 
-    <!-- ADMIN PANEL -->
-    <section class="admin-section">
-        <h2 class="section-title">Add Your Products</h2>
-        <div class="admin-form">
-            <input type="text" id="new-name" placeholder="Product Name">
-            <input type="text" id="new-category" placeholder="Category (fresh/dairy/pantry/personal)">
-            <input type="number" id="new-price" placeholder="Price (₹)">
-            <input type="text" id="new-img" placeholder="Image URL">
-            <button onclick="addNewProduct()" style="grid-column: span 1;">➕ Add Product</button>
-        </div>
-    </section>
+<div class="footer">© 2026 Swastik Group | Built for Business 🚀</div>
 
-    <!-- CHECKOUT SECTION -->
-    <section class="checkout-section">
-        <h2 class="section-title">Ready to Order?</h2>
-        <button class="checkout-btn" onclick="checkoutWhatsApp()">📱 Order via WhatsApp</button>
-    </section>
+<script>
+const phone="919475362410";
+const upi="swastiklal@fam";
 
-    <!-- FOOTER -->
-    <footer>
-        <h3>Swastik Group of Industries</h3>
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>About Us</h4>
-                <p>Building a huge company by connecting farmers directly to customers with quality products and top-grade service.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p>📱 WhatsApp: <a href="https://wa.me/919475362410">+91 9475 362 410</a></p>
-                <p>📧 Email: info@swastikgroup.com</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <p><a href="#products-section">Shop</a></p>
-                <p><a href="#about-section">About Us</a></p>
-                <p><a href="https://wa.me/919475362410">Contact</a></p>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2026 Swastik Group - Professional Edition v2.0... | Quality & Trust</p>
-        </div>
-    </footer>
+const products=[
+{id:1,name:"Tomato",price:50,cat:"fresh",img:"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400"},
+{id:2,name:"Milk",price:60,cat:"dairy",img:"https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400"},
+{id:3,name:"Rice",price:120,cat:"pantry",img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400"},
+{id:4,name:"Eggs",price:200,cat:"dairy",img:"https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=400"}
+];
 
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+let cart=JSON.parse(localStorage.getItem('cart'))||[];
+let filter='all';
 
-    <script>
-        // Products Database with Categories
-        const products = [
-            // Fresh Produce
-            { id: 1, name: "Fresh Tomatoes (1kg)", price: 50, category: "fresh", img: "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&q=80" },
-            { id: 2, name: "Red Onions (1kg)", price: 40, category: "fresh", img: "https://images.unsplash.com/photo-1518977956812-cd3adadaaf31?w=400&q=80" },
-            { id: 3, name: "Fresh Potatoes (1kg)", price: 30, category: "fresh", img: "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&q=80" },
-            { id: 4, name: "Garlic (250g)", price: 80, category: "fresh", img: "https://images.unsplash.com/photo-1540148426945-36d080a5d669?w=400&q=80" },
-            { id: 5, name: "Fresh Carrots (1kg)", price: 45, category: "fresh", img: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&q=80" },
-            
-            // Dairy & Eggs
-            { id: 6, name: "Amul Milk (1L)", price: 68, category: "dairy", img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80" },
-            { id: 7, name: "Farm Fresh Eggs (30)", price: 210, category: "dairy", img: "https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=400&q=80" },
-            { id: 8, name: "Amul Butter (100g)", price: 56, category: "dairy", img: "https://images.unsplash.com/photo-1589134707168-54b17f54c997?w=400&q=80" },
-            { id: 9, name: "Cheese Slices (100g)", price: 75, category: "dairy", img: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400&q=80" },
-            
-            // Pantry Staples
-            { id: 10, name: "Basmati Rice (1kg)", price: 120, category: "pantry", img: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80" },
-            { id: 11, name: "Wheat Flour (5kg)", price: 210, category: "pantry", img: "https://via.placeholder.com/400x300/333333/ffffff?text=Wheat+Flour" },
-            { id: 12, name: "Toor Dal (1kg)", price: 160, category: "pantry", img: "https://via.placeholder.com/400x300/333333/ffffff?text=Toor+Dal" },
-            { id: 13, name: "Sugar (1kg)", price: 45, category: "pantry", img: "https://images.unsplash.com/photo-1581456495146-65a71b2c8e52?w=400&q=80" },
-            { id: 14, name: "Salt (1kg)", price: 28, category: "pantry", img: "https://via.placeholder.com/400x300/333333/ffffff?text=Salt" },
-            { id: 15, name: "Sunflower Oil (1L)", price: 140, category: "pantry", img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80" },
-            
-            // Personal Care
-            { id: 16, name: "Dove Soap (100g)", price: 65, category: "personal", img: "https://via.placeholder.com/400x300/333333/ffffff?text=Dove+Soap" },
-            { id: 17, name: "Colgate Toothpaste (150g)", price: 115, category: "personal", img: "https://via.placeholder.com/400x300/333333/ffffff?text=Toothpaste" },
-            { id: 18, name: "Head & Shoulders (340ml)", price: 340, category: "personal", img: "https://via.placeholder.com/400x300/333333/ffffff?text=Shampoo" },
-            { id: 19, name: "Dettol Handwash (200ml)", price: 99, category: "personal", img: "https://via.placeholder.com/400x300/333333/ffffff?text=Handwash" }
-        ];
+function render(list){
+const box=document.getElementById('products');
+box.innerHTML='';
+list.forEach(p=>{
+box.innerHTML+=`<div class='card'>
+<img src='${p.img}'>
+<div class='card-body'>
+<h4>${p.name}</h4>
+<div class='price'>₹${p.price}</div>
+<button onclick='add(${p.id})'>Add to Cart</button>
+</div></div>`;
+});
+}
 
-        let cart = [];
-        let currentFilter = 'all';
+function updateView(){
+const q=document.getElementById('search').value.toLowerCase();
+let list=products.filter(p=>(filter==='all'||p.cat===filter)&&p.name.toLowerCase().includes(q));
+render(list);
+}
 
-        // Render Products
-        function renderProducts(list = products) {
-            const container = document.getElementById('products-container');
-            container.innerHTML = '';
-            
-            if (list.length === 0) {
-                container.innerHTML = '<h3 style="grid-column: 1/-1; text-align: center; color: #999;">No products found</h3>';
-                return;
-            }
+function setFilter(f,el){
+filter=f;
+document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
+el.classList.add('active');
+updateView();
+}
 
-            list.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <img src="${item.img}" alt="${item.name}" class="product-img">
-                    <div class="product-info">
-                        <div class="product-name">${item.name}</div>
-                        <div class="product-price">₹${item.price}</div>
-                        <button class="add-to-cart-btn" onclick="addToCart(${item.id})">Add to Cart</button>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
+function add(id){
+let item=cart.find(i=>i.id===id);
+if(item){item.qty++}else{let p=products.find(x=>x.id===id);cart.push({...p,qty:1})}
+save();
+}
 
-        // Filter Products
-        function filterProducts(category) {
-            currentFilter = category;
-            
-            // Update button styles
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            // Filter
-            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
-            renderProducts(filtered);
-        }
+function remove(id){
+cart=cart.filter(i=>i.id!==id);
+save();
+}
 
-        // Search Products
-        function searchProducts() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const filtered = products.filter(p => p.name.toLowerCase().includes(query));
-            renderProducts(filtered);
-        }
+function save(){
+localStorage.setItem('cart',JSON.stringify(cart));
+updateCart();
+}
 
-        // Add to Cart
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            const existingItem = cart.find(item => item.id === productId);
+function updateCart(){
+let count=cart.reduce((a,b)=>a+b.qty,0);
+document.getElementById('cartCount').innerText='Cart: '+count;
+renderCart();
+}
 
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({ ...product, quantity: 1 });
-            }
+function renderCart(){
+const box=document.getElementById('cartItems');
+box.innerHTML='';
+cart.forEach(i=>{
+box.innerHTML+=`<div class='cart-item'>${i.name} x${i.qty}<br>₹${i.price*i.qty}
+<button onclick='remove(${i.id})'>Remove</button></div>`;
+});
+}
 
-            updateCartBadge();
-        }
+function toggleCart(){
+document.getElementById('cartBox').classList.toggle('open');
+}
 
-        // Update Cart Badge
-        function updateCartBadge() {
-            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-badge').textContent = `🛒 Cart: ${total}`;
-        }
+function checkout(){
+if(cart.length===0)return alert('Cart empty');
+let msg='Order:%0A';
+let total=0;
+cart.forEach(i=>{total+=i.price*i.qty;msg+=`${i.name} x${i.qty} = ₹${i.price*i.qty}%0A`;});
+msg+=`Total ₹${total}`;
+window.open(`https://wa.me/${phone}?text=${msg}`);
+cart=[];save();
+}
 
-        // Add New Product
-        function addNewProduct() {
-            const name = document.getElementById('new-name').value;
-            const category = document.getElementById('new-category').value;
-            const price = parseFloat(document.getElementById('new-price').value);
-            let img = document.getElementById('new-img').value;
+function payUPI(){
+if(cart.length===0)return alert('Cart empty');
+let total=cart.reduce((a,b)=>a+(b.price*b.qty),0);
+window.location.href=`upi://pay?pa=${upi}&pn=Swastik%20Group&am=${total}&cu=INR`;
+}
 
-            if (!name || !category || !price) {
-                alert('Please fill all fields!');
-                return;
-            }
-
-            if (!img) {
-                img = 'https://via.placeholder.com/400x300/ddd/999?text=Product';
-            }
-
-            products.push({
-                id: Date.now(),
-                name,
-                category,
-                price,
-                img
-            });
-
-            document.getElementById('new-name').value = '';
-            document.getElementById('new-category').value = '';
-            document.getElementById('new-price').value = '';
-            document.getElementById('new-img').value = '';
-
-            renderProducts();
-            alert(`${name} added successfully! 🎉`);
-        }
-
-        // Checkout via WhatsApp
-        function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                alert('Your cart is empty! Please add products first.');
-                return;
-            }
-
-            confetti({
-                particleCount: 200,
-                spread: 100,
-                origin: { y: 0.6 }
-            });
-
-            let message = "🚀 *New Order from Swastik Group*%0A%0A";
-            let total = 0;
-
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                total += itemTotal;
-                message += `✓ ${item.name}%0A   ₹${item.price} x ${item.quantity} = ₹${itemTotal}%0A%0A`;
-            });
-
-            message += "═════════════════════════%0A";
-            message += `💰 *Total: ₹${total}*%0A%0A`;
-            message += "Please confirm my order! 🙏%0A";
-            message += "Thank you for choosing Swastik Group!";
-
-            const phone = "919475362410";
-            cart = [];
-            updateCartBadge();
-
-            setTimeout(() => {
-                window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-            }, 1500);
-        }
-
-        // Scroll Functions
-        function scrollToProducts() {
-            document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function scrollToAbout() {
-            document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Initial render
-        renderProducts();
-    </script>
+updateCart();
+updateView();
+</script>
 
 </body>
 </html>
