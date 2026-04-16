@@ -3,217 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Galaxy | Shop</title>
-    <style>
-        /* --- CSS STYLES --- */
-        :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #ffffff;
-            --accent: #00d4ff;
-        }
-
-        body.dark-mode {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav {
-            padding: 15px 20px;
-            background-color: #1a1a1a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333;
-        }
-
-        h1 {
-            margin: 0;
-            color: var(--accent);
-        }
-
-        #cart-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-            z-index: 1000;
-        }
-
-        #product-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .product-card {
-            background: var(--card-bg);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-
-        .product-card img {
-            max-width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            background-color: #333;
-        }
-
-        .product-card button {
-            background-color: var(--accent);
-            color: #000;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-            margin-top: 10px;
-            transition: background 0.2s;
-        }
-
-        .product-card button:hover {
-            background-color: #00b3d6;
-        }
-
-        .cart-summary {
-            text-align: center;
-            padding: 30px;
-        }
-
-        .cart-summary button {
-            background-color: #25D366;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: background 0.2s;
-        }
-
-        .cart-summary button:hover {
-            background-color: #128C7E;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <title>Super Galaxy E-commerce Store</title>
 </head>
-<body class="dark-mode">
-
-    <nav>
-        <h1>Super Galaxy</h1>
-        <div id="auth-status"></div>
+<body>
+    <nav class="sticky-nav">
+        <div class="cart-counter">Cart: 0</div>
+        <input type="text" placeholder="Search products..." id="search-bar">
     </nav>
-    
-    <div id="cart-counter">Cart: 0 items</div>
-
-    <main id="product-container"></main>
-
-    <div class="cart-summary">
-        <button onclick="checkoutWhatsApp()">Order via WhatsApp</button>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth-compat.js"></script>
-    
+    <h1>Welcome to the Super Galaxy E-commerce Store</h1>
+    <section class="products">
+        <h2>Available Products</h2>
+        <div class="product-list">
+            <!-- Example Product Item -->
+            <div class="product-item">
+                <h3>Pantry Staples</h3>
+                <p>Description of pantry staples.</p>
+            </div>
+            <div class="product-item">
+                <h3>Dairy</h3>
+                <p>Description of dairy products.</p>
+            </div>
+            <div class="product-item">
+                <h3>Vegetables</h3>
+                <p>Description of fresh vegetables.</p>
+            </div>
+            <div class="product-item">
+                <h3>Personal Care</h3>
+                <p>Description of personal care products.</p>
+            </div>
+            <div class="product-item">
+                <h3>Cleaning Supplies</h3>
+                <p>Description of cleaning supplies.</p>
+            </div>
+            <div class="product-item">
+                <h3>Snacks</h3>
+                <p>Description of snacks.</p>
+            </div>
+            <!-- Add more product items here -->
+        </div>
+    </section>
+    <footer>
+        <button id="checkout-button" onclick="whatsappCheckout('919475362410')">Checkout via WhatsApp</button>
+    </footer>
     <script>
-        const products = [
-            { id: 1, name: "Fresh Apples", price: 150, img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6fac6?w=400&q=80" },
-            { id: 2, name: "Whole Wheat Bread", price: 50, img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80" },
-            { id: 3, name: "Organic Milk", price: 80, img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80" }
-        ];
-
-        let cart = [];
-
-        function renderProducts() {
-            const container = document.getElementById('product-container');
-            container.innerHTML = products.map(item => `
-                <div class="product-card">
-                    <img src="${item.img}" alt="${item.name}">
-                    <h3>${item.name}</h3>
-                    <p>₹${item.price}</p>
-                    <button onclick="addToCart(${item.id})">Add to Cart</button>
-                </div>
-            `).join('');
+        function whatsappCheckout(phoneNumber) {
+            window.open(`https://wa.me/${phoneNumber}`, '_blank');
         }
-
-        function addToCart(productId) {
-            const existingItem = cart.find(item => item.id === productId);
-
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                const product = products.find(item => item.id === productId);
-                cart.push({ ...product, quantity: 1 });
-            }
-            
-            updateCartUI();
-        }
-
-        function updateCartUI() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-counter').innerText = `Cart: ${totalItems} items`;
-        }
-
-        function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                alert("Your cart is empty! Add some groceries first.");
-                return;
-            }
-
-            confetti({
-                particleCount: 150,
-                spread: 80,
-                origin: { y: 0.6 }
-            });
-
-            let message = "🚀 *New Order from Super Galaxy*%0A";
-            message += "--------------------------%0A";
-            
-            let grandTotal = 0;
-
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                grandTotal += itemTotal;
-                message += `• *${item.name}* (₹${item.price} x ${item.quantity}) = ₹${itemTotal}%0A`;
-            });
-
-            message += "--------------------------%0A";
-            message += `*Total Amount: ₹${grandTotal}*%0A%0A`;
-            message += "Please confirm my order!";
-
-            const phone = "919475362410";
-            
-            cart = [];
-            updateCartUI();
-
-            setTimeout(() => {
-                window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-            }, 1500); 
-        }
-
-        renderProducts();
     </script>
 </body>
 </html>
