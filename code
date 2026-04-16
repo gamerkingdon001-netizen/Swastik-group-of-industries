@@ -3,240 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Galaxy | Shop</title>
+    <title>Swastik Group - Quality Products & Top Grade Service</title>
     <style>
-        /* --- CSS STYLES --- */
-        :root {
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-color: #ffffff;
-            --accent: #00d4ff;
-        }
-
-        body.dark-mode {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav {
-            padding: 15px 20px;
-            background-color: #1a1a1a;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333;
-        }
-
-        h1 {
-            margin: 0;
-            color: var(--accent);
-        }
-
-        #cart-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
-            z-index: 1000;
-        }
-
-        #product-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .product-card {
-            background: var(--card-bg);
-            border: 1px solid #333;
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-
-        .product-card img {
-            max-width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            background-color: #333;
-        }
-
-        .product-card button {
-            background-color: var(--accent);
-            color: #000;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            width: 100%;
-            margin-top: 10px;
-            transition: background 0.2s;
-        }
-
-        .product-card button:hover {
-            background-color: #00b3d6;
-        }
-
-        .cart-summary {
-            text-align: center;
-            padding: 30px;
-        }
-
-        .cart-summary button {
-            background-color: #25D366; /* WhatsApp Green */
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.1em;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: background 0.2s;
-        }
-
-        .cart-summary button:hover {
-            background-color: #128C7E;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background: #f5f5f5; color: #333; }
+        nav { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 28px; font-weight: bold; color: white; }
+        .search-box { padding: 10px 20px; border: none; border-radius: 25px; width: 300px; }
+        #cart-badge { background: #e74c3c; color: white; padding: 8px 15px; border-radius: 20px; font-weight: bold; }
+        .hero { background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%); color: white; padding: 80px 30px; text-align: center; }
+        .hero h1 { font-size: 48px; margin-bottom: 15px; }
+        .hero p { font-size: 18px; max-width: 600px; margin: 0 auto 30px; }
+        .btn { padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; font-weight: 600; }
+        .btn-primary { background: white; color: #2ecc71; }
+        .btn-secondary { background: rgba(255,255,255,0.2); color: white; border: 2px solid white; }
+        .about { padding: 60px 30px; background: white; text-align: center; }
+        .section-title { font-size: 36px; color: #2ecc71; margin-bottom: 40px; }
+        .about-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .about-card { padding: 30px; border-left: 5px solid #2ecc71; background: #f9f9f9; border-radius: 8px; }
+        .about-card h3 { color: #2ecc71; margin-bottom: 15px; }
+        .filters { padding: 30px; background: white; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+        .filter-btn { padding: 10px 20px; border: 2px solid #2ecc71; background: white; color: #2ecc71; border-radius: 25px; cursor: pointer; font-weight: 600; }
+        .filter-btn.active { background: #2ecc71; color: white; }
+        .products-section { padding: 40px 30px; background: #f5f5f5; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; }
+        .product-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 0; }
+        .product-img { width: 100%; height: 200px; object-fit: cover; }
+        .product-info { padding: 20px; }
+        .product-name { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+        .product-price { font-size: 24px; color: #2ecc71; font-weight: 700; margin-bottom: 15px; }
+        .add-to-cart-btn { width: 100%; padding: 12px; background: #2ecc71; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        .admin-section { padding: 40px 30px; background: white; }
+        .admin-form { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        .admin-form input { padding: 12px; border: 2px solid #ddd; border-radius: 5px; }
+        .admin-form button { padding: 12px 30px; background: #2ecc71; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        .checkout-section { padding: 40px 30px; background: #f5f5f5; text-align: center; }
+        .checkout-btn { padding: 18px 50px; background: #25D366; color: white; border: none; border-radius: 50px; font-size: 18px; font-weight: 700; cursor: pointer; }
+        footer { background: #2c3e50; color: white; padding: 40px 30px; text-align: center; }
+        footer h3 { color: #2ecc71; margin-bottom: 15px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto 40px; text-align: left; }
+        .footer-col h4 { color: #2ecc71; margin-bottom: 15px; }
+        .footer-col a { color: #2ecc71; text-decoration: none; }
     </style>
 </head>
-<body class="dark-mode">
-
+<body>
     <nav>
-        <h1>Super Galaxy</h1>
-        <div id="auth-status"></div>
+        <div class="logo">🌾 Swastik Group</div>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <input type="text" class="search-box" id="search-input" placeholder="Search products..." oninput="searchProducts()">
+            <div id="cart-badge">🛒 Cart: 0</div>
+        </div>
     </nav>
-    
-    <div id="cart-counter">Cart: 0 items</div>
 
-    <main id="product-container"></main>
+    <section class="hero">
+        <h1>Swastik Group of Industries</h1>
+        <p style="font-size: 24px; margin-bottom: 20px;">🌱 Quality & Trust - Direct From Farmers to Your Doorstep</p>
+        <p>Experience premium quality products with top-grade service.</p>
+        <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px;">
+            <button class="btn btn-primary" onclick="document.getElementById('products-section').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+            <button class="btn btn-secondary" onclick="document.getElementById('about-section').scrollIntoView({behavior:'smooth'})">Learn More</button>
+        </div>
+    </section>
 
-    <div class="cart-summary">
-        <button onclick="checkoutWhatsApp()">Order via WhatsApp</button>
+    <section class="about" id="about-section">
+        <h2 class="section-title">Why Choose Swastik?</h2>
+        <div class="about-content">
+            <div class="about-card">
+                <h3>✅ High Quality</h3>
+                <p>Best quality products from trusted farmers and suppliers.</p>
+            </div>
+            <div class="about-card">
+                <h3>⭐ Top Grade Service</h3>
+                <p>Exceptional customer service every time.</p>
+            </div>
+            <div class="about-card">
+                <h3>🚚 Fast Delivery</h3>
+                <p>Quick delivery right to your doorstep.</p>
+            </div>
+            <div class="about-card">
+                <h3>🌍 Direct Sourcing</h3>
+                <p>Direct from farmers with fair pricing.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+        <button class="filter-btn" onclick="filterProducts('fresh')">Fresh Produce</button>
+        <button class="filter-btn" onclick="filterProducts('dairy')">Dairy & Eggs</button>
+        <button class="filter-btn" onclick="filterProducts('pantry')">Pantry</button>
+        <button class="filter-btn" onclick="filterProducts('personal')">Personal Care</button>
     </div>
 
+    <section class="products-section" id="products-section">
+        <div class="products-grid" id="products-container"></div>
+    </section>
+
+    <section class="admin-section">
+        <h2 class="section-title">Add Your Products</h2>
+        <div class="admin-form">
+            <input type="text" id="new-name" placeholder="Product Name">
+            <input type="text" id="new-category" placeholder="Category">
+            <input type="number" id="new-price" placeholder="Price (₹)">
+            <input type="text" id="new-img" placeholder="Image URL">
+            <button onclick="addNewProduct()">Add Product</button>
+        </div>
+    </section>
+
+    <section class="checkout-section">
+        <h2 class="section-title">Ready to Order?</h2>
+        <button class="checkout-btn" onclick="checkoutWhatsApp()">Order via WhatsApp</button>
+    </section>
+
+    <footer>
+        <h3>Swastik Group of Industries</h3>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <p>Building a huge company by connecting farmers to customers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p>WhatsApp: <a href="https://wa.me/919475362410">+91 9475 362 410</a></p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <p><a href="#products-section">Shop</a></p>
+                <p><a href="#about-section">About</a></p>
+            </div>
+        </div>
+        <p style="margin-top: 20px; color: #999;">&copy; 2026 Swastik Group. All rights reserved.</p>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-auth-compat.js"></script>
-    
     <script>
-        // --- JAVASCRIPT LOGIC ---
-
-        // 1. Firebase Configuration (Replace with your actual keys later)
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "super-galaxy-xxxxx.firebaseapp.com",
-            projectId: "super-galaxy-xxxxx",
-            storageBucket: "super-galaxy-xxxxx.appspot.com",
-            messagingSenderId: "XXXXX",
-            appId: "XXXXX"
-        };
-        // const app = firebase.initializeApp(firebaseConfig);
-        // const auth = firebase.auth();
-
-        // 2. Product Data (Added placeholder images so it looks good immediately)
         const products = [
-            { id: 1, name: "Fresh Apples", price: 150, img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6fac6?w=400&q=80" },
-            { id: 2, name: "Whole Wheat Bread", price: 50, img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80" },
-            { id: 3, name: "Organic Milk", price: 80, img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80" }
+            {id:1, name:"Fresh Tomatoes (1kg)", price:50, category:"fresh", img:"https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&q=80"},
+            {id:2, name:"Red Onions (1kg)", price:40, category:"fresh", img:"https://images.unsplash.com/photo-1518977956812-cd3adadaaf31?w=400&q=80"},
+            {id:3, name:"Fresh Potatoes (1kg)", price:30, category:"fresh", img:"https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&q=80"},
+            {id:4, name:"Garlic (250g)", price:80, category:"fresh", img:"https://images.unsplash.com/photo-1540148426945-36d080a5d669?w=400&q=80"},
+            {id:5, name:"Fresh Carrots (1kg)", price:45, category:"fresh", img:"https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=400&q=80"},
+            {id:6, name:"Amul Milk (1L)", price:68, category:"dairy", img:"https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80"},
+            {id:7, name:"Farm Fresh Eggs (30)", price:210, category:"dairy", img:"https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=400&q=80"},
+            {id:8, name:"Amul Butter (100g)", price:56, category:"dairy", img:"https://images.unsplash.com/photo-1589134707168-54b17f54c997?w=400&q=80"},
+            {id:9, name:"Cheese Slices (100g)", price:75, category:"dairy", img:"https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400&q=80"},
+            {id:10, name:"Basmati Rice (1kg)", price:120, category:"pantry", img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&q=80"},
+            {id:11, name:"Wheat Flour (5kg)", price:210, category:"pantry", img:"https://via.placeholder.com/400x300?text=Flour"},
+            {id:12, name:"Toor Dal (1kg)", price:160, category:"pantry", img:"https://via.placeholder.com/400x300?text=Dal"},
+            {id:13, name:"Sugar (1kg)", price:45, category:"pantry", img:"https://images.unsplash.com/photo-1581456495146-65a71b2c8e52?w=400&q=80"},
+            {id:14, name:"Salt (1kg)", price:28, category:"pantry", img:"https://via.placeholder.com/400x300?text=Salt"},
+            {id:15, name:"Sunflower Oil (1L)", price:140, category:"pantry", img:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&q=80"},
+            {id:16, name:"Dove Soap (100g)", price:65, category:"personal", img:"https://via.placeholder.com/400x300?text=Soap"},
+            {id:17, name:"Colgate Toothpaste (150g)", price:115, category:"personal", img:"https://via.placeholder.com/400x300?text=Paste"},
+            {id:18, name:"Shampoo (340ml)", price:340, category:"personal", img:"https://via.placeholder.com/400x300?text=Shampoo"},
+            {id:19, name:"Handwash (200ml)", price:99, category:"personal", img:"https://via.placeholder.com/400x300?text=Wash"}
         ];
 
         let cart = [];
 
-        // 3. Render Products to Screen
-        function renderProducts() {
-            const container = document.getElementById('product-container');
-            container.innerHTML = products.map(item => `
-                <div class="product-card">
-                    <img src="${item.img}" alt="${item.name}">
-                    <h3>${item.name}</h3>
-                    <p>₹${item.price}</p>
-                    <button onclick="addToCart(${item.id})">Add to Cart</button>
-                </div>
-            `).join('');
+        function renderProducts(list = products) {
+            const c = document.getElementById('products-container');
+            c.innerHTML = '';
+            list.forEach(p => {
+                c.innerHTML += `<div class="product-card"><img src="${p.img}" class="product-img"><div class="product-info"><div class="product-name">${p.name}</div><div class="product-price">₹${p.price}</div><button class="add-to-cart-btn" onclick="addToCart(${p.id})">Add to Cart</button></div></div>`;
+            });
         }
 
-        // 4. Add Items to Cart Array
-        function addToCart(productId) {
-            const existingItem = cart.find(item => item.id === productId);
-
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                const product = products.find(item => item.id === productId);
-                cart.push({ ...product, quantity: 1 });
-            }
-            
-            updateCartUI();
+        function filterProducts(cat) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            renderProducts(cat === 'all' ? products : products.filter(p => p.category === cat));
         }
 
-        // 5. Update the Visual Cart Counter
-        function updateCartUI() {
-            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cart-counter').innerText = `Cart: ${totalItems} items`;
+        function searchProducts() {
+            const q = document.getElementById('search-input').value.toLowerCase();
+            renderProducts(products.filter(p => p.name.toLowerCase().includes(q)));
         }
 
-        // 6. WhatsApp Checkout with Confetti 🎉
+        function addToCart(id) {
+            const p = products.find(x => x.id === id);
+            const e = cart.find(x => x.id === id);
+            if (e) e.quantity++; else cart.push({...p, quantity: 1});
+            document.getElementById('cart-badge').innerText = `🛒 Cart: ${cart.reduce((s,i) => s+i.quantity, 0)}`;
+        }
+
+        function addNewProduct() {
+            const n = document.getElementById('new-name').value;
+            const c = document.getElementById('new-category').value;
+            const p = parseFloat(document.getElementById('new-price').value);
+            let i = document.getElementById('new-img').value;
+            if (!n || !c || !p) { alert('Fill all fields!'); return; }
+            if (!i) i = 'https://via.placeholder.com/400x300?text=Product';
+            products.push({id: Date.now(), name: n, category: c, price: p, img: i});
+            document.getElementById('new-name').value = '';
+            document.getElementById('new-category').value = '';
+            document.getElementById('new-price').value = '';
+            document.getElementById('new-img').value = '';
+            renderProducts();
+            alert(`${n} added!`);
+        }
+
         function checkoutWhatsApp() {
-            if (cart.length === 0) {
-                alert("Your cart is empty! Add some groceries first.");
-                return;
-            }
-
-            // Trigger Confetti Animation
-            confetti({
-                particleCount: 150,
-                spread: 80,
-                origin: { y: 0.6 }
-            });
-
-            // Build WhatsApp Message
-            let message = "🚀 *New Order from Super Galaxy*%0A";
-            message += "--------------------------%0A";
-            
-            let grandTotal = 0;
-
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                grandTotal += itemTotal;
-                message += `• *${item.name}* (₹${item.price} x ${item.quantity}) = ₹${itemTotal}%0A`;
-            });
-
-            message += "--------------------------%0A";
-            message += `*Total Amount: ₹${grandTotal}*%0A%0A`;
-            message += "Please confirm my order!";
-
-            const phone = "91XXXXXXXXXX"; // Put your shop's WhatsApp number here
-            
-            // Empty the cart out so they can start a fresh order later
+            if (!cart.length) { alert('Cart is empty!'); return; }
+            confetti({particleCount: 200, spread: 100, origin: {y: 0.6}});
+            let msg = "Order from Swastik Group:\n\n";
+            let tot = 0;
+            cart.forEach(i => { tot += i.price * i.quantity; msg += `${i.name} x${i.quantity} = ₹${i.price * i.quantity}\n`; });
+            msg += `\nTotal: ₹${tot}`;
             cart = [];
-            updateCartUI();
-
-            // Wait 1.5 seconds so user enjoys the confetti, then open WhatsApp
-            setTimeout(() => {
-                window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-            }, 1500); 
+            document.getElementById('cart-badge').innerText = '🛒 Cart: 0';
+            setTimeout(() => window.open(`https://wa.me/919475362410?text=${encodeURIComponent(msg)}`), 1500);
         }
 
-        // Start the App
         renderProducts();
     </script>
 </body>
